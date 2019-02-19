@@ -7,11 +7,17 @@ struct singleton
 {
   typedef T value_type;
   T value;
+  
   // Conversions from T and to T:
   explicit singleton(const T& x) : value(x) {}
   explicit operator T() const { return value; }
+  
+  // grostig: According to Stepanov the following block is anti-pattern, 
+  // but he includes it, to show what others do.
+  // Converts between types held by singleton.  ie. int to double.
   template <typename U>
   singleton(const singleton<U>& x) : value(x.value) {}
+  
   // Write conversions from T to singleton<T> and singleton<T> to T.
 
   // Semiregular:
