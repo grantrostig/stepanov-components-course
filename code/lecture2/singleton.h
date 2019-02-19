@@ -15,11 +15,10 @@ struct singleton
   // grostig: According to Stepanov the following block is anti-pattern, 
   // but he includes it, to show what others do.
   // Converts between types held by singleton.  ie. int to double.
-  template <typename U>
-  singleton(const singleton<U>& x) : value(x.value) {}
-  
   // Write conversions from T to singleton<T> and singleton<T> to T.
-
+//  template <typename U>
+//  singleton(const singleton<U>& x) : value(x.value) {}
+  
   // Semiregular:
   singleton(const singleton& x) : value(x.value) {} // could be implicitly declared
   singleton() {}                                    // could be implicitly declared sometimes
@@ -54,6 +53,12 @@ struct singleton
   bool operator>=(const singleton& x, const singleton& y) {
     return !(x < y);
   } 
+
+  // Arithmetic
+  friend
+  T operator+(const singleton& x, const singleton& y) {
+    return x.value + y.value;
+  }
 
 
 };
