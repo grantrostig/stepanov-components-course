@@ -1,15 +1,167 @@
-# Created by and for Qt Creator This file was created for editing the project sources only.
-# You may attempt to use it for building too, by modifying this file here.
-
 TARGET = stepanov-components-course
 
 TEMPLATE = app
-CONFIG += console c++17
 CONFIG -= app_bundle
 CONFIG -= qt
+CONFIG += console c++17  # places gnu++1z on compile line for some strange reason!
+QMAKE_CXXFLAGS += \
+#            -std=c++17 \
+#            -std=c++1z \
+#            -std=gnu++17 \
+#            -std=gnu++1z \
+#            -std=c++2a \
+#            -std=gnu++2a \
+#            -pedantic-errors \
+#            -pedantic \
+#            -Weffc++ \
+            -Wall \
+            -Wno-unused-parameter \
+#            -fconcepts \
+#            -DBOOST_SYSTEM_NO_DEPRECATED \  # not sure what it does.
+            -DBOOST_LOG_DYN_LINK  # on compile line not link line.
 
-SOURCES += \
-        code/lecture2/singleton.cpp
+LIBS += -pthread  # to avoid some link error on Fedora26
+# boost on _fedora26_ parial list only
+LIBS += \
+#        -lboost_atomic \
+#        -lboost_chrono \
+#        -lboost_context \
+#        -lboost_coroutine \
+#        -lboost_date_time \
+#        -lboost_fiber \
+#        -lboost_filesystem \
+#        -lboost_graph_parallel \
+#        -lboost_graph \
+        -lboost_iostreams \
+#        -lboost_locale \
+#        -lboost_log_setup \
+        -lboost_log \
+#        -lboost_math_c99f \
+#        -lboost_math_c99l \
+#        -lboost_math_c99 \
+#        -lboost_math_tr1f \
+#        -lboost_math_tr1l \
+#        -lboost_math_tr1 \
+#        -lboost_mpi_python-py27 \
+#        -lboost_mpi_python-py35 \
+#        -lboost_mpi_python \
+#        -lboost_mpi \
+#        -lboost_prg_exec_monitor \
+        -lboost_program_options \
+#        -lboost_python-py27 \
+#        -lboost_python-py35 \
+#        -lboost_python \
+#        -lboost_random \
+#        -lboost_regex \
+#        -lboost_serialization \
+#        -lboost_signals \
+        -lboost_system \
+#        -lboost_thread \
+#        -lboost_timer \
+#        -lboost_type_erasure \
+#        -lboost_unit_test_framework \
+#        -lboost_wave \
+#        -lboost_wserialization
+
+# boost on _ubuntu_17.04_
+#LIBS += \
+#        -lboost_atomic \
+#        -lboost_chrono \
+#        -lboost_context \
+#        -lboost_coroutine \
+#        -lboost_date_time \
+#        -lboost_fiber \
+#        -lboost_filesystem \
+#        -lboost_graph_parallel \
+#        -lboost_graph \
+#        -lboost_iostreams \
+#        -lboost_locale \
+#        -lboost_log_setup \
+#        -lboost_log \
+#        -lboost_math_c99f \
+#        -lboost_math_c99l \
+#        -lboost_math_c99 \
+#        -lboost_math_tr1f \
+#        -lboost_math_tr1l \
+#        -lboost_math_tr1 \
+#        -lboost_mpi_python-py27 \
+#        -lboost_mpi_python-py35 \
+#        -lboost_mpi_python \
+#        -lboost_mpi \
+#        -lboost_prg_exec_monitor \
+#        -lboost_program_options \
+#        -lboost_python-py27 \
+#        -lboost_python-py35 \
+#        -lboost_python \
+#        -lboost_random \
+#        -lboost_regex \
+#        -lboost_serialization \
+#        -lboost_signals \
+#        -lboost_system \
+#        -lboost_thread \
+#        -lboost_timer \
+#        -lboost_type_erasure \
+#        -lboost_unit_test_framework \
+#        -lboost_wave \
+#        -lboost_wserialization
+
+mac:{
+INCLUDEPATH += /usr/local/opt/boost/include \
+               /usr/local/opt/eigen/include
+
+LIBS -= -lboost_log
+
+LIBS += -L/usr/local/opt/boost/lib/ \
+        -lboost_log-mt
+}
+
+SOURCES = \
+#   $$PWD/code/lecture1/count_operations.cpp \
+#   $$PWD/code/lecture1/count_operations_normalized.cpp \
+#   $$PWD/code/lecture10/min.cpp \
+#   $$PWD/code/lecture10v2/min.cpp \
+#   $$PWD/code/lecture11/lisp/binary-counter.lisp \
+#   $$PWD/code/lecture11/lisp/min.lisp \
+#   $$PWD/code/lecture11/lisp/util.lisp \
+#   $$PWD/code/lecture11/python/min.py \
+#   $$PWD/code/lecture11/min.cpp \
+#   $$PWD/code/lecture12/sort.cpp \
+#   $$PWD/code/lecture14/sort.cpp \
+#   $$PWD/code/lecture15/ideas.txt \
+#   $$PWD/code/lecture15/sort.cpp \
+#   $$PWD/code/lecture15/test_sort.cpp \
+#   $$PWD/code/lecture17/ideas.txt \
+#   $$PWD/code/lecture17/sort.cpp \
+#   $$PWD/code/lecture17/test_insertion_sort.cpp \
+#   $$PWD/code/lecture17/test_sort.cpp \
+#   $$PWD/code/lecture18/ideas.txt \
+#   $$PWD/code/lecture18/sort.cpp \
+#   $$PWD/code/lecture18/test_insertion_sort.cpp \
+#   $$PWD/code/lecture18/test_sort.cpp \
+#   $$PWD/code/lecture19/ideas.txt \
+#   $$PWD/code/lecture19/sort.cpp \
+#   $$PWD/code/lecture19/test_insertion_sort.cpp \
+#   $$PWD/code/lecture19/test_sort.cpp \
+##   $$PWD/code/lecture2/singleton.cpp \
+#   $$PWD/code/lecture20/ideas.txt \
+#   $$PWD/code/lecture20/sort.cpp \
+#   $$PWD/code/lecture20/test.cpp \
+#   $$PWD/code/lecture20/test_insertion_sort.cpp \
+#   $$PWD/code/lecture20/test_sort.cpp \
+##   $$PWD/code/lecture3/count_operations.cpp \
+   $$PWD/code/lecture3/count_operations_normalized.cpp \
+   $$PWD/code/lecture3/instrumented.cpp \
+#   $$PWD/code/lecture4/example.cpp \
+#   $$PWD/code/lecture5/minmax.cpp \
+#   $$PWD/code/lecture6/min.cpp \
+#   $$PWD/code/lecture7/min.cpp \
+#   $$PWD/code/lecture8/min.cpp \
+#   $$PWD/code/lecture9/min.cpp
+    logging.cpp \
+    program_options.cpp \
+    logging.cpp \
+    program_options.cpp \
+    utils.cpp
 
 HEADERS = \
 #   $$PWD/code/lecture1/concepts.h \
@@ -70,7 +222,7 @@ HEADERS = \
 #   $$PWD/code/lecture19/test_sort.h \
 #   $$PWD/code/lecture19/timer.h \
 #   $$PWD/code/lecture19/type_description.h \
-   $$PWD/code/lecture2/singleton.h \
+##   $$PWD/code/lecture2/singleton.h \
 #   $$PWD/code/lecture20/algorithm.h \
 #   $$PWD/code/lecture20/insertion_sort.h \
 #   $$PWD/code/lecture20/merge.h \
@@ -83,14 +235,14 @@ HEADERS = \
 #   $$PWD/code/lecture20/test_sort.h \
 #   $$PWD/code/lecture20/timer.h \
 #   $$PWD/code/lecture20/type_description.h \
-#   $$PWD/code/lecture3/concepts.h \
-#   $$PWD/code/lecture3/count_operations.h \
-#   $$PWD/code/lecture3/functorized.h \
-#   $$PWD/code/lecture3/instrumented.h \
-#   $$PWD/code/lecture3/iota.h \
-#   $$PWD/code/lecture3/setsort.h \
-#   $$PWD/code/lecture3/singleton.h \
-#   $$PWD/code/lecture3/table_util.h \
+   $$PWD/code/lecture3/concepts.h \
+   $$PWD/code/lecture3/count_operations.h \
+   $$PWD/code/lecture3/functorized.h \
+   $$PWD/code/lecture3/instrumented.h \
+   $$PWD/code/lecture3/iota.h \
+   $$PWD/code/lecture3/setsort.h \
+   $$PWD/code/lecture3/singleton.h \
+   $$PWD/code/lecture3/table_util.h \
 #   $$PWD/code/lecture4/min.h \
 #   $$PWD/code/lecture4/swap.h \
 #   $$PWD/code/lecture5/algorithm.h \
@@ -104,49 +256,12 @@ HEADERS = \
 #   $$PWD/code/lecture9/binary_counter.h \
 #   $$PWD/code/lecture9/list_pool.h \
 #   $$PWD/code/lecture9/min_element1_2.h
-
-#SOURCES = \
-#   $$PWD/code/lecture1/count_operations.cpp \
-#   $$PWD/code/lecture1/count_operations_normalized.cpp \
-#   $$PWD/code/lecture10/min.cpp \
-#   $$PWD/code/lecture10v2/min.cpp \
-#   $$PWD/code/lecture11/lisp/binary-counter.lisp \
-#   $$PWD/code/lecture11/lisp/min.lisp \
-#   $$PWD/code/lecture11/lisp/util.lisp \
-#   $$PWD/code/lecture11/python/min.py \
-#   $$PWD/code/lecture11/min.cpp \
-#   $$PWD/code/lecture12/sort.cpp \
-#   $$PWD/code/lecture14/sort.cpp \
-#   $$PWD/code/lecture15/ideas.txt \
-#   $$PWD/code/lecture15/sort.cpp \
-#   $$PWD/code/lecture15/test_sort.cpp \
-#   $$PWD/code/lecture17/ideas.txt \
-#   $$PWD/code/lecture17/sort.cpp \
-#   $$PWD/code/lecture17/test_insertion_sort.cpp \
-#   $$PWD/code/lecture17/test_sort.cpp \
-#   $$PWD/code/lecture18/ideas.txt \
-#   $$PWD/code/lecture18/sort.cpp \
-#   $$PWD/code/lecture18/test_insertion_sort.cpp \
-#   $$PWD/code/lecture18/test_sort.cpp \
-#   $$PWD/code/lecture19/ideas.txt \
-#   $$PWD/code/lecture19/sort.cpp \
-#   $$PWD/code/lecture19/test_insertion_sort.cpp \
-#   $$PWD/code/lecture19/test_sort.cpp \
-#   $$PWD/code/lecture2/singleton.cpp \
-#   $$PWD/code/lecture20/ideas.txt \
-#   $$PWD/code/lecture20/sort.cpp \
-#   $$PWD/code/lecture20/test.cpp \
-#   $$PWD/code/lecture20/test_insertion_sort.cpp \
-#   $$PWD/code/lecture20/test_sort.cpp \
-#   $$PWD/code/lecture3/count_operations.cpp \
-#   $$PWD/code/lecture3/count_operations_normalized.cpp \
-#   $$PWD/code/lecture3/instrumented.cpp \
-#   $$PWD/code/lecture4/example.cpp \
-#   $$PWD/code/lecture5/minmax.cpp \
-#   $$PWD/code/lecture6/min.cpp \
-#   $$PWD/code/lecture7/min.cpp \
-#   $$PWD/code/lecture8/min.cpp \
-#   $$PWD/code/lecture9/min.cpp
+    logging.h \
+    program_options.h \
+    logging.h \
+    main_boost.h \
+    program_options.h \
+    utils.h
 
 #INCLUDEPATH = \
 #    $$PWD/code/lecture1 \
@@ -179,5 +294,4 @@ HEADERS = \
 #   $$PWD/code/lecture16/concepts design for stl.pdf \
 #   $$PWD/code/lecture16/concepts lite.pdf \
 
-#DEFINES = 
 
