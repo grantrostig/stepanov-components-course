@@ -26,8 +26,8 @@ struct instrumented :  instrumented_base
   instrumented(const instrumented& x) : value(x.value) {
     ++operation_counts[copy];
   } 
-  instrumented() { ++operation_counts[default_constructor]; }
-  ~instrumented() { ++operation_counts[destructor]; }
+  instrumented() { ++operation_counts[default_constructor]; }  // default constructor
+  ~instrumented() { ++operation_counts[destructor]; }  // calls destructors of automatic storage class variables implicitly.  such as vector, but not a pointer.
   instrumented& operator=(const instrumented& x) {  
     ++operation_counts[assignment];
     value = x.value;

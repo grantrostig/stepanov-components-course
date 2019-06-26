@@ -157,11 +157,11 @@ SOURCES = \
 #   $$PWD/code/lecture7/min.cpp \
 #   $$PWD/code/lecture8/min.cpp \
 #   $$PWD/code/lecture9/min.cpp
-    logging.cpp \
-    program_options.cpp \
-    logging.cpp \
-    program_options.cpp \
-    utils.cpp
+#    logging.cpp \
+#    program_options.cpp \
+#    logging.cpp \
+#    program_options.cpp \
+#    utils.cpp
 
 HEADERS = \
 #   $$PWD/code/lecture1/concepts.h \
@@ -256,12 +256,12 @@ HEADERS = \
 #   $$PWD/code/lecture9/binary_counter.h \
 #   $$PWD/code/lecture9/list_pool.h \
 #   $$PWD/code/lecture9/min_element1_2.h
-    logging.h \
-    program_options.h \
-    logging.h \
-    main_boost.h \
-    program_options.h \
-    utils.h
+#    logging.h \
+#    program_options.h \
+#    logging.h \
+#    main_boost.h \
+#    program_options.h \
+#    utils.h
 
 #INCLUDEPATH = \
 #    $$PWD/code/lecture1 \

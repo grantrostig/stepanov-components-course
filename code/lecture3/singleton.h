@@ -16,7 +16,7 @@ struct singleton
     return *this;
   }
   // Regular
-  friend
+//  friend
   bool operator==(const singleton& x, const singleton& y) {
     return x.value == y.value;
   }
